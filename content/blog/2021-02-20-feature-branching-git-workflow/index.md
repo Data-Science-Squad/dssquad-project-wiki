@@ -23,8 +23,6 @@ The following example demonstrates how to contribute to the website repository u
 4. Add files, commit, and push the `new-hugo-theme` branch
 5. Sign in to GitHub and submit a Pull Request to merge `new-hugo-theme` into the `develop` branch
 
-#### Pull the current state of the remote develop branch
-
 ```
 # Change the local directory to `dssquad-website` 
 cd dssquad-website
@@ -42,4 +40,14 @@ git commit -m "selected a new hugo theme that works with blogdown"
 git push origin new-hugo-theme
 ```
 
-Follow [these instructions] to submit a Pull Request to merge the feature branch into the develop branch following a code review.
+To merge the `new-hugo-theme` feature branch, [submit a Pull Request](https://dssquad-docs.netlify.app/blog/2021-02-20-pull-requests/).
+
+## Recommended workflows for each team
+
+**Data Engineering:** Create a feature branch (e.g. `datakit`) for version 1 of the datakit. Push this feature branch and submit a Pull Request to merge into the `develop` branch. Continue to use feature branches and merge into `develop` as needed. 
+
+**Machine Learning:** Create branches for individual members (e.g. `gayatri_dobhal` and `nisrine_hammout`) for all development purposes (e.g. notebooks for EDA, training, testing, etc.). When version 1 of the model is ready for testing in production, coordinate with Danny to merge the development code into the `develop` branch.
+
+**Web application:** Configure Streamlit Sharing to deploy the `main` branch and the `develop` to separate URLs. Use the `main` branch for production and the `develop` branch for dev/testing. Develop new features using feature branches, then submit a Pull Request to merge feature branches into the `develop` branch. 
+
+**Website:** Configure Netlify to deploy the `main` branch and the `develop` to separate URLs. Use the `main` branch for production and the `develop` branch for dev/testing. Develop new features using feature branches, then submit a Pull Request to merge feature branches into the `develop` branch.

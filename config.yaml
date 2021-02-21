@@ -30,6 +30,6 @@ markup:
       unsafe: yes
 menu:
   primary:
-    - name: Docs
+    - name: Home
       url: /
       weight: 1
