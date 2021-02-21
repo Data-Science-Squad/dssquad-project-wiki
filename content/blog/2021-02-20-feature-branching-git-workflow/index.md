@@ -7,7 +7,7 @@ categories: []
 tags: []
 meta_img: images/image.png
 description: Description for the page
-weight: 2
+weight: 4
 ---
 
 Feature branching describes the process of creating Git branches dedicated to specific project features without disturbing the `main` or `develop` branches within a repo. For example, website developers may create a feature branch called `home-page` for building the home page of the website. Once a Pull Request and code review have been completed, the feature branch is merged into the production codebase.
@@ -45,7 +45,7 @@ git commit -m "selected a new hugo theme that works with blogdown"
 git push origin new-hugo-theme
 ```
 
-To merge the `new-hugo-theme` feature branch, [submit a Pull Request](https://dssquad-docs.netlify.app/blog/2021-02-20-pull-requests/).
+To merge the `new-hugo-theme` feature branch, [submit a Pull Request](https://dssquad-wiki.netlify.app/blog/2021-02-20-pull-requests/).
 
 ## Recommended workflows for each team
 

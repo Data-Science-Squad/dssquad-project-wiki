@@ -1,7 +1,7 @@
 ---
 title: Secure database connections
 author: ''
-weight: 4
+weight: 6
 date: '2021-02-20'
 slug: []
 categories: []
