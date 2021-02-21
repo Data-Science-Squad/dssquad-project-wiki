@@ -1,0 +1,26 @@
+{
+    "id": "12CE1588",
+    "path": "~/data-science-projects/ds-squad/dssquad-project-wiki/content/blog/2021-02-20-secure-database-connections-using-environment-variables/index.md",
+    "project_path": "content/blog/2021-02-20-secure-database-connections-using-environment-variables/index.md",
+    "type": "markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1613866164440.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "6,8",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1613866207,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1613866207822,
+    "read_only": false,
+    "read_only_alternatives": []
+}

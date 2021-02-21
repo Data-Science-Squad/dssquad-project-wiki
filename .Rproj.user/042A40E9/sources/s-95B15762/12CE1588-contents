@@ -1,0 +1,50 @@
+---
+title: Secure database connections
+author: ''
+date: '2021-02-20'
+slug: []
+categories: []
+tags: []
+meta_img: images/image.png
+description: Description for the page
+---
+
+For security reasons, use environment variables to store sensitive information and prevent it from being exposed in the codebase. This is recommended for local development and is required practice for pushing code to GitHub.
+
+## Python
+
+Set environment variables based on this example: `os.environ["CASKEY5_USERNAME"] = "my_database_username"`
+
+```
+import os
+import mysql.connector
+
+db_uid = os.getenv('CASKEY5_USERNAME')
+db_pwd = os.getenv('CASKEY5_PASSWORD')
+db_host = os.getenv('CASKEY5_HOST')
+
+cnx = mysql.connector.connect(user=db_uid, password=db_pwd, host=db_host, database='caskey5_buffaloCrime')
+
+cnx.close()
+```
+
+## R
+
+- Set environment variables using `Sys.setenv()`, e.g. `Sys.setenv(CASKEY5_USERNAME = "")`
+- Retrieve environment variables using `Sys.getenv()`, e.g. `Sys.getenv("CASKEY5_USERNAME")`
+
+```
+library(RMySQL)
+library(DBI)
+
+conn <- dbConnect(
+  MySQL(), 
+  user = Sys.getenv("CASKEY5_USERNAME"), 
+  password = Sys.getenv("CASKEY5_PASSWORD"),
+  host = Sys.getenv("CASKEY5_HOST"),
+  dbname = 'caskey5_buffaloCrime', 
+  port = 3306
+)
+
+dbDisconnect(conn)
+```
