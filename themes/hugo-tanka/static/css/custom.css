@@ -212,17 +212,18 @@ hr {
 
 .content .meta-title {
     font-size: 1.5625rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0rem;
 }
 
 .content .meta-title {
     font-size: 1.5625rem;
     font-weight: 600;
+    margin-top: -0.2rem;
 }
 
 .content .meta-title a {
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .content .meta-title a:hover {
@@ -230,7 +231,7 @@ hr {
 }
 
 .content .meta-date {
-    font-size: 1rem;
+    font-size: 0.7rem;
     color: #738491;
     margin-bottom: 0.5rem;
 }
