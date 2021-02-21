@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DS Squad Project Wiki</title>
+    <link>/</link>
+    <description>Recent content on DS Squad Project Wiki</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data Science Squad GitHub Organization</title>
+      <link>/blog/2021-02-20-data-science-squad-github-organization/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2021-02-20-data-science-squad-github-organization/</guid>
+      <description>The Data Science Squad Organization is a centralized collection of official repositories for our project. The Organization contains separate repositories for each deliverable to promote organization and minimize interference.
+Link: https://github.com/Data-Science-Squad</description>
+    </item>
+    
+    <item>
+      <title>Feature branching Git workflow</title>
+      <link>/blog/2021-02-20-feature-branching-git-workflow/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2021-02-20-feature-branching-git-workflow/</guid>
+      <description>Feature branching describes the process of creating Git branches dedicated to specific project features without disturbing the main or develop branches within a repo. For example, website developers may create a feature branch called home-page for building the home page of the website. Once a Pull Request and code review have been completed, the feature branch is merged into the production codebase.
+The main and develop branches in each repository should always be &amp;ldquo;deployable&amp;rdquo;, meaning these branches should only contain working code for either production (main) or dev/testing (develop).</description>
+    </item>
+    
+    <item>
+      <title>Pull Requests</title>
+      <link>/blog/2021-02-20-pull-requests/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2021-02-20-pull-requests/</guid>
+      <description>A Pull Request (PR) is a way to merge code from one branch into another through a formal review process. For example, if you develop code in a feature branch that needs to be merged into the develop branch, you will need to submit a PR and the repo administrator will either accept or reject the merge. This is the approach we will take to ensure the protected branches (main and develop) are maintained at a high standard.</description>
+    </item>
+    
+    <item>
+      <title>Secure database connections</title>
+      <link>/blog/2021-02-20-secure-database-connections-using-environment-variables/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2021-02-20-secure-database-connections-using-environment-variables/</guid>
+      <description>For security reasons, use environment variables to store sensitive information and prevent it from being exposed in the codebase. This is recommended for local development and is required practice for pushing code to GitHub.
+Python Set environment variables based on this example: os.environ[&amp;quot;CASKEY5_USERNAME&amp;quot;] = &amp;quot;my_database_username&amp;quot;
+import osimport mysql.connectordb_uid = os.getenv(&#39;CASKEY5_USERNAME&#39;)db_pwd = os.getenv(&#39;CASKEY5_PASSWORD&#39;)db_host = os.getenv(&#39;CASKEY5_HOST&#39;)cnx = mysql.connector.connect(user=db_uid, password=db_pwd, host=db_host, database=&#39;caskey5_buffaloCrime&#39;)cnx.close()R  Set environment variables using Sys.</description>
+    </item>
+    
+  </channel>
+</rss>

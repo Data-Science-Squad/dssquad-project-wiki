@@ -15,7 +15,7 @@
                         <ul class="list-unstyled">
                             {{ range .Data.Pages.GroupByDate "2006" "desc"}}
                                 <li class="groupby">{{ .Key }}</li>
-                                {{ range sort .Pages "Date" "desc" }}
+                                {{ range sort .Pages "Date" "asc" }}
                                     {{ partial "list" . }}
                                 {{ end }}
                             {{ end }}
