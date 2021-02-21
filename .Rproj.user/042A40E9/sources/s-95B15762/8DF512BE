@@ -3,7 +3,7 @@
     "path": "~/data-science-projects/ds-squad/dssquad-project-wiki/config.yaml",
     "project_path": "config.yaml",
     "type": "yaml",
-    "hash": "0",
+    "hash": "1145685449",
     "contents": "",
     "dirty": false,
     "created": 1613865114738.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "32,16",
-        "scrollLine": "15"
+        "cursorPosition": "0,11",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1613867122,
+    "lastKnownWriteTime": 1613868245,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1613867122803,
+    "last_content_update": 1613868245568,
     "read_only": false,
     "read_only_alternatives": []
 }

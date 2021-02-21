@@ -1,4 +1,4 @@
-baseurl: https://example.com
+baseurl: "/"
 title: DS Squad Project Wiki
 author: Nan Xiao
 canonifyurls: yes
