@@ -15,13 +15,13 @@ weight: 1
 - [Download Git](https://git-scm.com/downloads)
 - Create a [GitHub account](https://github.com/)
 
-## Using Git on the command line
-
-Team members are encouraged to use Git in their preferred command shell (e.g. Git Bash, macOS Terminal, Linux Terminal). Using a command shell means all interactions with Git are with [Git commands](https://education.github.com/git-cheat-sheet-education.pdf). While there are GUI tools for simplifying the Git experience, the use of universal Git commands promotes consistency throughout the team through the use of a common syntax.
-
 ## Data Science Squad GitHub Organization
 
 The [Data Science Squad Organization](https://github.com/Data-Science-Squad) is a centralized collection of official repositories for our project. The Organization contains separate repositories for each project deliverable to promote organization and minimize interference between team members. All team members should accept their invitations to join the Organization. Though team members will work with their primary repositories most often, all team members will have the opportunity to contribute to other repositories.
+
+## Using Git on the command line
+
+Team members are encouraged to use Git in their preferred command shell (e.g. Git Bash, macOS Terminal, Linux Terminal). Using a command shell means all interactions with Git are with [Git commands](https://education.github.com/git-cheat-sheet-education.pdf). While there are GUI tools for simplifying the Git experience, the use of universal Git commands promotes consistency throughout the team through the use of a common syntax.
 
 ## Cloning repositories
 
@@ -72,7 +72,7 @@ git pull origin <branch-name>
 
 ## Feature branching and Pull Requests
 
-Feature branching and Pull Requests are standard Git concepts that we will leverage in our project to promote organization and to maintain our production codebase at a high standard. All team members should familiarize themeselves with these concepts.
+Feature branching and Pull Requests are essential Git concepts that we will leverage in our project to promote safe and rapid development while keeping our production codebase clean. All team members should familiarize themeselves with these concepts.
 
 Sources:
 
