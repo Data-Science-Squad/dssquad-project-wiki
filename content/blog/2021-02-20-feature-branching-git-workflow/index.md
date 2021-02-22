@@ -1,5 +1,5 @@
 ---
-title: Using the Feature Branching strategy to safely and rapidly introduce new features into the codebase
+title: Feature Branching
 author: ''
 date: '2021-02-20'
 slug: []
