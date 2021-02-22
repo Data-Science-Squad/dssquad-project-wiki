@@ -1,5 +1,5 @@
 ---
-title: Feature branching Git workflow
+title: Using the Feature Branching strategy to safely and rapidly introduce new features into the codebase
 author: ''
 date: '2021-02-20'
 slug: []
@@ -7,7 +7,7 @@ categories: []
 tags: []
 meta_img: images/image.png
 description: Description for the page
-weight: 4
+weight: 2
 ---
 
 Feature branching describes the process of creating Git branches dedicated to specific project features without disturbing the `main` or `develop` branches within a repo. For example, website developers may create a feature branch called `home-page` for building the home page of the website. Once a Pull Request and code review have been completed, the feature branch is merged into the production codebase.
@@ -47,12 +47,12 @@ git push origin new-hugo-theme
 
 To merge the `new-hugo-theme` feature branch, [submit a Pull Request](https://dssquad-wiki.netlify.app/blog/2021-02-20-pull-requests/).
 
-## Recommended workflows for each team
+## Recommended feature branching strategies for each team
 
-**Data Engineering:** Create a feature branch (e.g. `datakit`) for version 1 of the datakit. Push this feature branch and submit a Pull Request to merge into the `develop` branch. Continue to use feature branches and merge into `develop` as needed. 
+**Data Engineering:** Create a feature branch (e.g. `datakit`) for version 1 of the datakit. Have a team member push this feature branch and submit a Pull Request to merge `datakit` into the `develop` branch. Continue to use feature branches and merge into `develop` as needed. An administrator will review the feature branch and it's functionality.
 
-**Machine Learning:** Create branches for individual members (e.g. `gayatri_dobhal` and `nisrine_hammout`) for all development purposes (e.g. notebooks for EDA, training, testing, etc.). When version 1 of the model is ready for testing in production, coordinate with Danny to gather requirements and merge the development code into the `develop` branch.
+**Machine Learning:** Create branches for individual members (e.g. `gayatri_dobhal` and `nisrine_hammout`) for all development purposes (e.g. notebooks for EDA, training, testing, etc.). When version 1 of the model is ready for integration into dev and prod environments, coordinate with Danny to gather requirements for a feature branch.
 
-**Web application:** Configure Streamlit Sharing to deploy the `main` and `develop` branches to separate URLs. Use the `main` branch for the final production app and the `develop` branch for dev/testing. Develop new features using feature branches (e.g. `date_range_dropdown`), then submit Pull Requests to merge feature branches into the `develop` branch. 
+**Web application:** Configure Streamlit Sharing to deploy the `main` and `develop` branches to separate URLs. Use the `main` branch for the final production app and the `develop` branch for a development version. Develop new features using feature branches (e.g. `date_range_slider`), then submit Pull Requests to merge feature branches into the `develop` branch. An administrator will review the feature branch and it's functionality.
 
-**Website:** Configure Netlify to deploy the `main` branch and the `develop` to separate URLs. Use the `main` branch for production and the `develop` branch for dev/testing. Develop new features using feature branches (e.g. `meet_the_team_page`), then submit a Pull Request to merge feature branches into the `develop` branch. All team members can contribute to the website (e.g. personal articles) by following this workflow.
+**Website:** Configure Netlify to deploy the `main` branch and the `develop` to separate URLs. Use the `main` branch for the production website and the `develop` branch for development website. Develop new features using feature branches (e.g. `meet_the_team_page`), then submit a Pull Request to merge feature branches into the `develop` branch. An administrator will review the feature branch and it's functionality. All team members can contribute to the website (e.g. personal articles) by following this workflow.

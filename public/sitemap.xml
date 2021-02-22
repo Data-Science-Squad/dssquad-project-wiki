@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/blog/2021-02-20-data-science-squad-github-organization/</loc>
+    <loc>/blog/2021-02-21-getting-started-with-git-and-github/</loc>
     <lastmod>2021-02-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/blog/2021-02-20-feature-branching-git-workflow/</loc>
     <lastmod>2021-02-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/blog/2021-02-20-pull-requests/</loc>
+    <lastmod>2021-02-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/blog/2021-02-20-slack-workspace/</loc>
     <lastmod>2021-02-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/blog/2021-02-20-secure-database-connections-using-environment-variables/</loc>

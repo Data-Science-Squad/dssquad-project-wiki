@@ -1,7 +1,7 @@
 ---
-title: Pull Requests
+title: Using Pull Requests in GitHub to merge feature branches into dev and prod branches
 author: ''
-weight: 5
+weight: 3
 date: '2021-02-20'
 slug: []
 categories: []

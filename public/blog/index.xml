@@ -8,13 +8,12 @@
     <language>en</language>
     <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Data Science Squad GitHub Organization</title>
-      <link>/blog/2021-02-20-data-science-squad-github-organization/</link>
+      <title>Getting started with Git and our GitHub repositories</title>
+      <link>/blog/2021-02-21-getting-started-with-git-and-github/</link>
       <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2021-02-20-data-science-squad-github-organization/</guid>
-      <description>The Data Science Squad Organization is a centralized collection of official repositories for our project. The Organization contains separate repositories for each deliverable to promote organization and minimize interference.
-Link: https://github.com/Data-Science-Squad</description>
+      <guid>/blog/2021-02-21-getting-started-with-git-and-github/</guid>
+      <description>Download Git and create a GitHub account  Download Git Create a GitHub account  Data Science Squad GitHub Organization The Data Science Squad Organization is a centralized collection of official repositories for our project. The Organization contains separate repositories for each project deliverable to promote organization and minimize interference between team members. All team members should accept their invitations to join the Organization.</description>
     </item>
     
     <item>
@@ -28,12 +27,22 @@ The main and develop branches in each repository should always be &amp;ldquo;dep
     </item>
     
     <item>
-      <title>Pull Requests</title>
+      <title>Using Pull Requests in GitHub to merge features into dev and prod codebases</title>
       <link>/blog/2021-02-20-pull-requests/</link>
       <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>/blog/2021-02-20-pull-requests/</guid>
       <description>A Pull Request (PR) is a way to merge code from one branch into another through a formal review process. For example, if you develop code in a feature branch that needs to be merged into the develop branch, you will need to submit a PR and the repo administrator will either accept or reject the merge. This is the approach we will take to ensure the protected branches (main and develop) are maintained at a high standard.</description>
+    </item>
+    
+    <item>
+      <title>Slack workspace and Trello board</title>
+      <link>/blog/2021-02-20-slack-workspace/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2021-02-20-slack-workspace/</guid>
+      <description>Our DS Squad Slack workspace is our primary communication platform. Use our Slack workspace to send messages to the group, @mention team members, send direct messages, and share files.
+Trello is our Kanban-style tool for organizing and displaying the tasks we are working on, tasks that need to get done, and which team members are working on them. Use our Trello Task Tracker Board to help the team stay informed and monitor our progress.</description>
     </item>
     
     <item>
