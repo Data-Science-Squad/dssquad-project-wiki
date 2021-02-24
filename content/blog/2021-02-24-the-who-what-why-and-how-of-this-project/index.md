@@ -1,7 +1,7 @@
 ---
 title: The who, what, why, and how of this project
 author: Danny Morris
-date: '2021-02-24'
+date: '2021-02-19'
 slug: []
 categories: []
 tags: []
