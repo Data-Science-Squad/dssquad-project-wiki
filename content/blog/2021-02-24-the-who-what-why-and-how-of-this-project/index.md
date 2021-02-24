@@ -49,7 +49,7 @@ We are working together to **gain experience** building a high-quality product, 
 
 ## How are we doing this
 
-To accomplish our goals, we must rely on two key values: **communication** and **automation**.
+To accomplish our goals, we must rely on two key values: communication and automation.
 
 **Communication**
 
