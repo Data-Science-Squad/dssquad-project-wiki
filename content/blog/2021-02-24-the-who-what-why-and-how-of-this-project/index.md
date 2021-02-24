@@ -11,7 +11,7 @@ description: Description for the page
 
 ## Who we are
 
-We are a diverse, global team of data and analytics professionals who organized for the experience of developing a production-grade software product powered by machine learning.
+The **Data Science Squad** is a diverse, global team of data and analytics professionals who organized for the experience of developing a production-grade software product powered by machine learning.
 
 The Team:
 
