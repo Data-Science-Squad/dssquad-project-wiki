@@ -39,7 +39,7 @@ This software has 4 main components:
 
 - **Machine learning model**: Model for predicting future crime volume throughout the city of Buffalo.
 
-- **Front-end web application**: Dynamic UI for displaying and interacting with production data assets.
+- **Front-end web application**: Dynamic UI for users to interact with production data assets.
 
 - **Project website**: A place to brand and promote our work.
 
