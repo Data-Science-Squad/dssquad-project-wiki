@@ -9,6 +9,7 @@
                 <div class="mx-0 mx-md-4 posts">
                     {{ range .Data.Pages.GroupByDate "2006" "desc"}}
                     {{ range sort .Pages "Date" "desc" }}
+                    {{ partial "intro" . }}
                     {{ partial "list" . }}
                     {{ end }}
                     {{ end }}
