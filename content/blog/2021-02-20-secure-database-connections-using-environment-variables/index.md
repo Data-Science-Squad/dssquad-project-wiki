@@ -1,8 +1,7 @@
 ---
-title: Secure database connections
-author: ''
-weight: 6
-date: '2021-02-20'
+title: Secure database connections and database queries using Python
+author: Danny Morris
+date: '2021-02-22'
 slug: []
 categories: []
 tags: []
@@ -10,42 +9,62 @@ meta_img: images/image.png
 description: Description for the page
 ---
 
-For security reasons, use environment variables to store sensitive information and prevent it from being exposed in the codebase. This is recommended for local development and is required practice for pushing code to GitHub.
-
-## Python
-
-Set environment variables based on this example: `os.environ["CASKEY5_USERNAME"] = "my_database_username"`
+**Using `mysql-connector` and `pandas`**
 
 ```
-import os
 import mysql.connector
+import pandas as pd
+import os
 
-db_uid = os.getenv('CASKEY5_USERNAME')
-db_pwd = os.getenv('CASKEY5_PASSWORD')
-db_host = os.getenv('CASKEY5_HOST')
+# Credentials
+user = os.getenv('CASKEY5_USERNAME')
+pwd = os.getenv('CASKEY5_PASSWORD')
+host = os.getenv('CASKEY5_HOST')
+database = 'caskey5_buffaloCrime'
 
-cnx = mysql.connector.connect(user=db_uid, password=db_pwd, host=db_host, database='caskey5_buffaloCrime')
+# Database connection
+cnx = mysql.connector.connect(user=user, password=pwd, host=host, database=database)
 
+# SQL query
+mycursor = cnx.cursor()
+mycursor.execute("SELECT * FROM all_dates")
+
+# Collect results from query and cast to Pandas DataFrame
+df = pd.DataFrame(mycursor.fetchall())
+df.columns = mycursor.column_names
+
+# Close connection
 cnx.close()
+
+# Top 5 rows of data
+df.head()
 ```
 
-## R
-
-- Set environment variables using `Sys.setenv()`, e.g. `Sys.setenv(CASKEY5_USERNAME = "")`
-- Retrieve environment variables using `Sys.getenv()`, e.g. `Sys.getenv("CASKEY5_USERNAME")`
+**Using `sqlalchemy`, `pymysql`, and `pandas`**
 
 ```
-library(RMySQL)
-library(DBI)
+# Libraries
+from sqlalchemy import create_engine
+import pymysql
+import pandas as pd
+import os
 
-conn <- dbConnect(
-  MySQL(), 
-  user = Sys.getenv("CASKEY5_USERNAME"), 
-  password = Sys.getenv("CASKEY5_PASSWORD"),
-  host = Sys.getenv("CASKEY5_HOST"),
-  dbname = 'caskey5_buffaloCrime', 
-  port = 3306
-)
+# Credentials
+user = os.getenv('CASKEY5_USERNAME')
+password = os.getenv('CASKEY5_PASSWORD')
+host = os.getenv('CASKEY5_HOST')
+database = 'caskey5_buffaloCrime'
 
-dbDisconnect(conn)
+# Database connection
+sqlEngine = create_engine('mysql+pymysql://{}:{}@{}:3306/{}'.format(user,password,host,database), pool_recycle=3600)
+dbConnection = sqlEngine.connect()
+
+# SQL query string
+query = "select * from full_incidents limit 100"
+
+# Execute query and return results as Pandas DataFRame
+pd_df = pd.read_sql(query, dbConnection)
+
+# Close connection!
+dbConnection.close()
 ```

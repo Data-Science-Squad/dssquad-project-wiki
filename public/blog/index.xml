@@ -6,28 +6,28 @@
     <description>Recent content in Blog on DS Squad Project Wiki</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Getting started with Git and our GitHub repositories</title>
       <link>/blog/2021-02-21-getting-started-with-git-and-github/</link>
       <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>/blog/2021-02-21-getting-started-with-git-and-github/</guid>
-      <description>Download Git and create a GitHub account  Download Git Create a GitHub account  Data Science Squad GitHub Organization The Data Science Squad Organization is a centralized collection of official repositories for our project. The Organization contains separate repositories for each project deliverable to promote organization and minimize interference between team members. All team members should accept their invitations to join the Organization.</description>
+      <description>Download Git and create a GitHub account  Download Git Create a GitHub account  Data Science Squad GitHub Organization The Data Science Squad Organization is a centralized collection of official repositories for our project. The Organization contains separate repositories for each project deliverable to promote organization and minimize interference between team members. All team members should accept their invitations to join the Organization. Though team members will work with their primary repositories most often, all team members will have the opportunity to contribute to other repositories.</description>
     </item>
     
     <item>
-      <title>Feature branching Git workflow</title>
+      <title>Feature Branching</title>
       <link>/blog/2021-02-20-feature-branching-git-workflow/</link>
       <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>/blog/2021-02-20-feature-branching-git-workflow/</guid>
-      <description>Feature branching describes the process of creating Git branches dedicated to specific project features without disturbing the main or develop branches within a repo. For example, website developers may create a feature branch called home-page for building the home page of the website. Once a Pull Request and code review have been completed, the feature branch is merged into the production codebase.
-The main and develop branches in each repository should always be &amp;ldquo;deployable&amp;rdquo;, meaning these branches should only contain working code for either production (main) or dev/testing (develop).</description>
+      <description>Feature branching describes the process of creating Git branches for adding new features to the codebase without disturbing the main or develop branches within a remote repository. For example, website developers may create a feature branch called home-page specifically for building the home page of the website. Once completed, this feature branch can be merged into the production codebase through a formal review process.
+Protecting the main and develop branches The main and develop branches represent our production (main) and development (develop) codebases.</description>
     </item>
     
     <item>
-      <title>Using Pull Requests in GitHub to merge features into dev and prod codebases</title>
+      <title>Pull Requests</title>
       <link>/blog/2021-02-20-pull-requests/</link>
       <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
       
@@ -46,14 +46,61 @@ Trello is our Kanban-style tool for organizing and displaying the tasks we are w
     </item>
     
     <item>
-      <title>Secure database connections</title>
+      <title>Logging ML metrics in Neptune</title>
+      <link>/blog/2021-02-27-logging-ml-metrics-in-neptune/</link>
+      <pubDate>Sat, 27 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2021-02-27-logging-ml-metrics-in-neptune/</guid>
+      <description>neptune.ai is a service for logging and tracking machine learning model metrics and performance. Neptune can be used during development to track experiments and compare models, and it can be used in production to monitor model performance with each new training run.
+The following code snippets demonstrates the basic usage of neptune.ai.
+Prerequisites Set the following environment variables to set a connection to our project workspace in Neptune. Contact Danny to obtain an API token.</description>
+    </item>
+    
+    <item>
+      <title>Productionizing the ML model</title>
+      <link>/blog/2021-02-27-productionalizing-the-ml-model/</link>
+      <pubDate>Sat, 27 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2021-02-27-productionalizing-the-ml-model/</guid>
+      <description>The Machine Learning Engineers should use this document as a guide for converting your model into a production asset and automating it. Note that this process can be started whenever a prototype model is ready, even if you intend to improve upon the model.
+The model should be on a daily release cycle, meaning each day the forecast model will be automatically re-run using new data (i.e. new crime incidents). This is made possible through the use of GitHub Actions, which is a feature within GitHub that triggers code to run in response to some &amp;ldquo;event&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Secure database connections and database queries using Python</title>
       <link>/blog/2021-02-20-secure-database-connections-using-environment-variables/</link>
-      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 27 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>/blog/2021-02-20-secure-database-connections-using-environment-variables/</guid>
-      <description>For security reasons, use environment variables to store sensitive information and prevent it from being exposed in the codebase. This is recommended for local development and is required practice for pushing code to GitHub.
-Python Set environment variables based on this example: os.environ[&amp;quot;CASKEY5_USERNAME&amp;quot;] = &amp;quot;my_database_username&amp;quot;
-import osimport mysql.connectordb_uid = os.getenv(&#39;CASKEY5_USERNAME&#39;)db_pwd = os.getenv(&#39;CASKEY5_PASSWORD&#39;)db_host = os.getenv(&#39;CASKEY5_HOST&#39;)cnx = mysql.connector.connect(user=db_uid, password=db_pwd, host=db_host, database=&#39;caskey5_buffaloCrime&#39;)cnx.close()R  Set environment variables using Sys.</description>
+      <description>Using mysql-connector and pandas
+import mysql.connectorimport pandas as pdimport os# Credentialsuser = os.getenv(&#39;CASKEY5_USERNAME&#39;)pwd = os.getenv(&#39;CASKEY5_PASSWORD&#39;)host = os.getenv(&#39;CASKEY5_HOST&#39;)database = &#39;caskey5_buffaloCrime&#39;# Database connectioncnx = mysql.connector.connect(user=user, password=pwd, host=host, database=database)# SQL querymycursor = cnx.cursor()mycursor.execute(&amp;quot;SELECT * FROM all_dates&amp;quot;)# Collect results from query and cast to Pandas DataFramedf = pd.DataFrame(mycursor.fetchall())df.columns = mycursor.column_names# Close connectioncnx.close()# Top 5 rows of datadf.</description>
+    </item>
+    
+    <item>
+      <title>Automating workflows with GitHub Actions</title>
+      <link>/blog/2021-02-23-github-actions/</link>
+      <pubDate>Tue, 23 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2021-02-23-github-actions/</guid>
+      <description>GitHub Actions will make it easy to automate and orchestrate various workflows that drive our software. For our purposes, we will use GitHub Actions to automatically deploy and run our production code in GitHub whenever certain actions are performed on a repository.
+Examples:
+  Every hour, a GitHub Actions workflow will automatically run the production Python script to retrieve new crime incidents from the source API and insert the new records into the production database.</description>
+    </item>
+    
+    <item>
+      <title>The who, what, why, and how of this project</title>
+      <link>/blog/2021-02-24-the-who-what-why-and-how-of-this-project/</link>
+      <pubDate>Fri, 19 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2021-02-24-the-who-what-why-and-how-of-this-project/</guid>
+      <description>Who we are The Data Science Squad is a diverse, global team of data and analytics professionals who organized for the experience of developing a production-grade software product powered by machine learning.
+The Team:
+Nisrine Hammout - Machine Learning Engineer
+Gayatri Dobhal - Machine Learning Engineer
+Eric Caskey - Data Engineer
+Melvin Sebastian - Data Engineer
+Cassin Thangam Edwin - Data Visualization Engineer/Front-end Developer
+Abdul-Mateen Qamardeen - Website Developer and QA Analyst</description>
     </item>
     
   </channel>

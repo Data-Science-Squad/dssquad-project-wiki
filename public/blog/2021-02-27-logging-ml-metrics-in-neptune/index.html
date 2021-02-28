@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> Secure database connections and database queries using Python - DS Squad Project Wiki </title>
+    <title> Logging ML metrics in Neptune - DS Squad Project Wiki </title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="referrer" content="no-referrer">
@@ -12,18 +12,18 @@
     <meta property="og:site_name" content="DS Squad Project Wiki" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="/blog/2021-02-20-secure-database-connections-using-environment-variables/" />
-    <meta property="og:title" content="Secure database connections and database queries using Python" />
+    <meta property="og:url" content="/blog/2021-02-27-logging-ml-metrics-in-neptune/" />
+    <meta property="og:title" content="Logging ML metrics in Neptune" />
     <meta property="og:image" content="/images/image.png" />
     <meta property="og:description" content="Description for the page" />
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta name="twitter:title" content="Secure database connections and database queries using Python" />
+    <meta name="twitter:title" content="Logging ML metrics in Neptune" />
     <meta name="twitter:description" content="Description for the page" />
     <meta name="twitter:image" content="/images/image.png" />
 
-    <link rel="canonical" href="/blog/2021-02-20-secure-database-connections-using-environment-variables/">
+    <link rel="canonical" href="/blog/2021-02-27-logging-ml-metrics-in-neptune/">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous" />
 
@@ -74,7 +74,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12 col-lg-8">
-                <h1 class="mx-0 mx-md-4 blog-post-title">Secure database connections and database queries using Python</h1>
+                <h1 class="mx-0 mx-md-4 blog-post-title">Logging ML metrics in Neptune</h1>
 
                 <div class="mb-md-4 meta">
                     
@@ -102,58 +102,38 @@
 
                 <div class="markdown blog-post-content">
                     
-    <p><strong>Using <code>mysql-connector</code> and <code>pandas</code></strong></p>
-<pre><code>import mysql.connector
-import pandas as pd
-import os
+    <p><a href="https://neptune.ai/">neptune.ai</a> is a service for logging and tracking machine learning model metrics and performance. Neptune can be used during development to track experiments and compare models, and it can be used in production to monitor model performance with each new training run.</p>
+<p>The following code snippets demonstrates the basic usage of neptune.ai.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>Set the following environment variables to set a connection to our project workspace in Neptune. Contact Danny to obtain an API token. Alternatively, a team member can create a new account (and project) and manage the credentials.</p>
+<pre><code>import os
+os.environ[&quot;NEPTUNE_API_TOKEN&quot;] = &quot;&quot;
+os.environ[&quot;NEPTUNE_PROJECT_DEV&quot;] = &quot;dannymorris/DS-Squad-Dev&quot;
+os.environ[&quot;NEPTUNE_PROJECT_PROD&quot;] = &quot;dannymorris/DS-Squad-Prod&quot;
+</code></pre><h3 id="run-experiments-and-log-metrics">Run experiments and log metrics</h3>
+<p>Add the following example code to your scripts and notebooks. Modify as needed.</p>
+<pre><code># Define lightgbm hyperparameters
+LGBM_PARAMS = {
+          'boosting_type': 'gbdt',
+          'objective': 'multiclass',
+          'num_class': 3,
+          'num_leaves': 27,
+          'learning_rate': 0.01,
+          'feature_fraction': 0.2,
+          'seed': 1234
+          }
+          
+# Initialize Neptune, provide API token, and connect to project Dev workspace
+neptune.init(api_token=os.getenv('NEPTUNE_API_TOKEN'),
+             project_qualified_name=os.getenv('NEPTUNE_PROJECT_DEV'))          
+          
+# Register an experiment in Neptune
+experiment_name = 'test-lightgbm'
+neptune.create_experiment(experiment_name, params={**LGBM_PARAMS})
 
-# Credentials
-user = os.getenv('CASKEY5_USERNAME')
-pwd = os.getenv('CASKEY5_PASSWORD')
-host = os.getenv('CASKEY5_HOST')
-database = 'caskey5_buffaloCrime'
-
-# Database connection
-cnx = mysql.connector.connect(user=user, password=pwd, host=host, database=database)
-
-# SQL query
-mycursor = cnx.cursor()
-mycursor.execute(&quot;SELECT * FROM all_dates&quot;)
-
-# Collect results from query and cast to Pandas DataFrame
-df = pd.DataFrame(mycursor.fetchall())
-df.columns = mycursor.column_names
-
-# Close connection
-cnx.close()
-
-# Top 5 rows of data
-df.head()
-</code></pre><p><strong>Using <code>sqlalchemy</code>, <code>pymysql</code>, and <code>pandas</code></strong></p>
-<pre><code># Libraries
-from sqlalchemy import create_engine
-import pymysql
-import pandas as pd
-import os
-
-# Credentials
-user = os.getenv('CASKEY5_USERNAME')
-password = os.getenv('CASKEY5_PASSWORD')
-host = os.getenv('CASKEY5_HOST')
-database = 'caskey5_buffaloCrime'
-
-# Database connection
-sqlEngine = create_engine('mysql+pymysql://{}:{}@{}:3306/{}'.format(user,password,host,database), pool_recycle=3600)
-dbConnection = sqlEngine.connect()
-
-# SQL query string
-query = &quot;select * from full_incidents limit 100&quot;
-
-# Execute query and return results as Pandas DataFRame
-pd_df = pd.read_sql(query, dbConnection)
-
-# Close connection!
-dbConnection.close()
+# Compute accuracy, RMSE, etc. and log in Neptune
+accuracy = accuracy_score(y_test, y_test_pred.argmax(axis=1))
+neptune.log_metric('accuracy', accuracy)
 </code></pre>
 
 

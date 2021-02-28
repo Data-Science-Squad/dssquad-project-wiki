@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> Feature branching Git workflow - DS Squad Project Wiki </title>
+    <title> Feature Branching - DS Squad Project Wiki </title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="referrer" content="no-referrer">
@@ -13,13 +13,13 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="/blog/2021-02-20-feature-branching-git-workflow/" />
-    <meta property="og:title" content="Feature branching Git workflow" />
+    <meta property="og:title" content="Feature Branching" />
     <meta property="og:image" content="/images/image.png" />
     <meta property="og:description" content="Description for the page" />
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta name="twitter:title" content="Feature branching Git workflow" />
+    <meta name="twitter:title" content="Feature Branching" />
     <meta name="twitter:description" content="Description for the page" />
     <meta name="twitter:image" content="/images/image.png" />
 
@@ -74,7 +74,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12 col-lg-8">
-                <h1 class="mx-0 mx-md-4 blog-post-title">Feature branching Git workflow</h1>
+                <h1 class="mx-0 mx-md-4 blog-post-title">Feature Branching</h1>
 
                 <div class="mb-md-4 meta">
                     
@@ -86,7 +86,7 @@
                     </span>
 
                     <span class="reading-time middot">
-                        3 min read
+                        4 min read
                     </span>
 
                     <div class="d-none d-md-inline tags">
@@ -98,39 +98,43 @@
 
                 <div class="markdown blog-post-content">
                     
-    <p>Feature branching describes the process of creating Git branches dedicated to specific project features without disturbing the <code>main</code> or <code>develop</code> branches within a repo. For example, website developers may create a feature branch called <code>home-page</code> for building the home page of the website. Once a Pull Request and code review have been completed, the feature branch is merged into the production codebase.</p>
-<p>The <code>main</code> and <code>develop</code> branches in each repository should always be &ldquo;deployable&rdquo;, meaning these branches should only contain working code for either production (<code>main</code>) or dev/testing (<code>develop</code>). Developers are not able to commit code directly to these branches in any of the project&rsquo;s repositories, thus feature branching is needed.</p>
-<p>Feature branches can be merged into the <code>develop</code> and <code>main</code> branches through Pull Requests. Developers submit Pull Requests when the feature branch is complete and needs to be reviewed. The repo administrator will review the Pull Request and either approve or reject the merge. If accepted, the feature branch can be deleted.</p>
+    <p>Feature branching describes the process of creating Git branches for adding new features to the codebase without disturbing the <code>main</code> or <code>develop</code> branches within a remote repository. For example, website developers may create a feature branch called <code>home-page</code> specifically for building the home page of the website. Once completed, this feature branch can be merged into the production codebase through a formal review process.</p>
+<h2 id="protecting-the-main-and-develop-branches">Protecting the main and develop branches</h2>
+<p>The <code>main</code> and <code>develop</code> branches represent our production (<code>main</code>) and development (<code>develop</code>) codebases. These branches are <strong>protected</strong>, meaning developers cannot commit code directly to them. They should also be &ldquo;deployable&rdquo;, meaning these branches should only contain functioning code that produces some desired output. The <code>main</code> branch should always deploy production code (e.g. the production website), while the <code>develop</code> branch may contain a production alternative for testing new features.</p>
+<h2 id="merging-feature-branches-into-main-and-develop-branches">Merging feature branches into main and develop branches</h2>
+<p>Feature branches can be merged into the other branches through Pull Requests. When a Pull Request is submitted, the repo administrator will review the Pull Request and either approve or reject the proposed merge. If accepted, the feature branch is merged into the target branch..</p>
+<p>Developers should only submit Pull Requests to merge feature branches into the <code>develop</code> branch in order to test new features and any other changes made to the codebase. Feature branches will never merged directly into the <code>main</code> branch. They must go through the <code>develop</code> branch first to be reviewed. Eventually, the <code>develop</code> branch codebase will reach a &ldquo;production state&rdquo;, at which point the <code>develop</code> branch will be merged into the production <code>main</code> branch.</p>
 <h2 id="example-feature-branching-using-the-website-repo">Example feature branching using the website repo</h2>
 <p>The following example demonstrates how to contribute to the website repository using feature branching. The basic steps are as follows:</p>
 <ol>
-<li>Change your local directory to the <code>dssquad-website</code> project.</li>
+<li>Clone the <code>dssquad-website</code> repo and change your directory to the local copy.</li>
 <li>Pull down the current <code>develop</code> branch in GitHub.</li>
 <li>Create a feature branch named <code>new-hugo-theme</code>.</li>
 <li>Add files, commit, and push the <code>new-hugo-theme</code> branch.</li>
 <li>Once complete, sign in to GitHub and submit a Pull Request to merge <code>new-hugo-theme</code> into the <code>develop</code> branch</li>
 </ol>
 <p>A full code sample&hellip;</p>
-<pre><code># Change the local directory to `dssquad-website` 
+<pre><code># Clone the repo and switch to the local directory
+git clone https://github.com/Data-Science-Squad/dssquad-website.git
 cd dssquad-website
 
 # Pull down the current `develop` branch in GitHub
 git checkout develop
 git pull origin develop
 
-# Create a feature branch named `new-hugo-theme`
+# Create a feature branch named `new-hugo-theme` and switch to it
 git checkout -b new-hugo-theme
 
 # Add files, commit, and push the feature branch
 git add --all
-git commit -m &quot;selected a new hugo theme that works with blogdown&quot;
+git commit -m &quot;changed the hugo theme to a more modern style&quot;
 git push origin new-hugo-theme
-</code></pre><p>To merge the <code>new-hugo-theme</code> feature branch, <a href="https://dssquad-wiki.netlify.app/blog/2021-02-20-pull-requests/">submit a Pull Request</a>.</p>
-<h2 id="recommended-workflows-for-each-team">Recommended workflows for each team</h2>
-<p><strong>Data Engineering:</strong> Create a feature branch (e.g. <code>datakit</code>) for version 1 of the datakit. Push this feature branch and submit a Pull Request to merge into the <code>develop</code> branch. Continue to use feature branches and merge into <code>develop</code> as needed.</p>
-<p><strong>Machine Learning:</strong> Create branches for individual members (e.g. <code>gayatri_dobhal</code> and <code>nisrine_hammout</code>) for all development purposes (e.g. notebooks for EDA, training, testing, etc.). When version 1 of the model is ready for testing in production, coordinate with Danny to gather requirements and merge the development code into the <code>develop</code> branch.</p>
-<p><strong>Web application:</strong> Configure Streamlit Sharing to deploy the <code>main</code> and <code>develop</code> branches to separate URLs. Use the <code>main</code> branch for the final production app and the <code>develop</code> branch for dev/testing. Develop new features using feature branches (e.g. <code>date_range_dropdown</code>), then submit Pull Requests to merge feature branches into the <code>develop</code> branch.</p>
-<p><strong>Website:</strong> Configure Netlify to deploy the <code>main</code> branch and the <code>develop</code> to separate URLs. Use the <code>main</code> branch for production and the <code>develop</code> branch for dev/testing. Develop new features using feature branches (e.g. <code>meet_the_team_page</code>), then submit a Pull Request to merge feature branches into the <code>develop</code> branch. All team members can contribute to the website (e.g. personal articles) by following this workflow.</p>
+</code></pre><p>To merge the <code>new-hugo-theme</code> feature branch into the <code>develop</code> branch, <a href="https://dssquad-wiki.netlify.app/blog/2021-02-20-pull-requests/">submit a Pull Request</a> and the repo administrator will review your code.</p>
+<h2 id="recommended-feature-branching-strategies-for-each-team">Recommended feature branching strategies for each team</h2>
+<p><strong>Data Engineering:</strong> Create a feature branch (e.g. <code>datakit</code>) for version 1 of the datakit codebase. Have a team member push this feature branch and submit a Pull Request to merge <code>datakit</code> into the <code>develop</code> branch. Continue to use feature branches and merge into <code>develop</code> as needed. An administrator will review the feature branch and it&rsquo;s functionality.</p>
+<p><strong>Machine Learning:</strong> Create branches for individual members (e.g. <code>gayatri_dobhal</code> and <code>nisrine_hammout</code>) for all development purposes (e.g. notebooks for EDA, training, testing, etc.). When version 1 of the model is ready for production integration, coordinate with Danny to gather requirements.</p>
+<p><strong>Web application:</strong> Configure Streamlit Sharing to deploy the <code>main</code> and <code>develop</code> branches to separate URLs. Use the <code>main</code> branch for the final production app and the <code>develop</code> branch for a development version. Develop new features using feature branches (e.g. <code>date_range_slider</code>), then submit Pull Requests to merge feature branches into the <code>develop</code> branch. An administrator will review the feature branch and it&rsquo;s functionality.</p>
+<p><strong>Website:</strong> Configure Netlify to deploy the <code>main</code> branch and the <code>develop</code> branch to separate URLs. Use the <code>main</code> branch for the production website and the <code>develop</code> branch for development website. Develop new features using feature branches (e.g. <code>meet_the_team_page</code>), then submit a Pull Request to merge feature branches into the <code>develop</code> branch. An administrator will review the feature branch and it&rsquo;s functionality. All team members can contribute to the website (e.g. personal articles) by following this workflow.</p>
 
 
 

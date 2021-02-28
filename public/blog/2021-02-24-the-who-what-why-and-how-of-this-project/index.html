@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> Secure database connections and database queries using Python - DS Squad Project Wiki </title>
+    <title> The who, what, why, and how of this project - DS Squad Project Wiki </title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="referrer" content="no-referrer">
@@ -12,18 +12,18 @@
     <meta property="og:site_name" content="DS Squad Project Wiki" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="/blog/2021-02-20-secure-database-connections-using-environment-variables/" />
-    <meta property="og:title" content="Secure database connections and database queries using Python" />
+    <meta property="og:url" content="/blog/2021-02-24-the-who-what-why-and-how-of-this-project/" />
+    <meta property="og:title" content="The who, what, why, and how of this project" />
     <meta property="og:image" content="/images/image.png" />
     <meta property="og:description" content="Description for the page" />
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta name="twitter:title" content="Secure database connections and database queries using Python" />
+    <meta name="twitter:title" content="The who, what, why, and how of this project" />
     <meta name="twitter:description" content="Description for the page" />
     <meta name="twitter:image" content="/images/image.png" />
 
-    <link rel="canonical" href="/blog/2021-02-20-secure-database-connections-using-environment-variables/">
+    <link rel="canonical" href="/blog/2021-02-24-the-who-what-why-and-how-of-this-project/">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous" />
 
@@ -74,7 +74,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12 col-lg-8">
-                <h1 class="mx-0 mx-md-4 blog-post-title">Secure database connections and database queries using Python</h1>
+                <h1 class="mx-0 mx-md-4 blog-post-title">The who, what, why, and how of this project</h1>
 
                 <div class="mb-md-4 meta">
                     
@@ -85,12 +85,12 @@
                     
                     
 
-                    <span class="date middot" title='Sat Feb 27 2021 00:00:00 UTC'>
-                        2021-02-27
+                    <span class="date middot" title='Fri Feb 19 2021 00:00:00 UTC'>
+                        2021-02-19
                     </span>
 
                     <span class="reading-time middot">
-                        1 min read
+                        2 min read
                     </span>
 
                     <div class="d-none d-md-inline tags">
@@ -102,59 +102,42 @@
 
                 <div class="markdown blog-post-content">
                     
-    <p><strong>Using <code>mysql-connector</code> and <code>pandas</code></strong></p>
-<pre><code>import mysql.connector
-import pandas as pd
-import os
+    <h2 id="who-we-are">Who we are</h2>
+<p>The <strong>Data Science Squad</strong> is a diverse, global team of data and analytics professionals who organized for the experience of developing a production-grade software product powered by machine learning.</p>
+<p>The Team:</p>
+<p><a href="https://www.linkedin.com/in/nisrine-hammout/">Nisrine Hammout</a> - Machine Learning Engineer</p>
+<p><a href="https://www.linkedin.com/in/gayatri-dobhal-8a0637156/">Gayatri Dobhal</a> - Machine Learning Engineer</p>
+<p><a href="https://www.linkedin.com/in/ericrcaskey/">Eric Caskey</a> - Data Engineer</p>
+<p><a href="https://www.linkedin.com/in/melvin-sebastian/">Melvin Sebastian</a> - Data Engineer</p>
+<p><a href="https://www.linkedin.com/in/cassin-thangam-edwin">Cassin Thangam Edwin</a> - Data Visualization Engineer/Front-end Developer</p>
+<p><a href="https://ng.linkedin.com/in/abdul-mateen-qamardeen-4167331b6">Abdul-Mateen Qamardeen</a> - Website Developer and QA Analyst</p>
+<p><a href="https://www.linkedin.com/in/drmorris87/">Danny Morris</a> - Team Lead</p>
+<h2 id="what-we-are-building">What we are building</h2>
+<p>We are building a full stack software product that uses machine learning to forecast short-term crime volume throughout the various geographical areas in the city of Buffalo. The idea is to support the Buffalo Police Department with a data-driven service that helps them schedule and deploy an appropriate number of patrol officers given the predicted crime volume in the coming days and weeks.</p>
+<p>This software has 4 main components:</p>
+<ul>
+<li>
+<p><strong>Database</strong>: Centralized data storage for all production data assets.</p>
+</li>
+<li>
+<p><strong>Machine learning model</strong>: Model for predicting future crime volume throughout the city of Buffalo.</p>
+</li>
+<li>
+<p><strong>Front-end web application</strong>: Dynamic UI for users to interact with production data assets.</p>
+</li>
+<li>
+<p><strong>Project website</strong>: A place to brand and promote our work.</p>
+</li>
+</ul>
+<h2 id="why-we-are-doing-this">Why we are doing this</h2>
+<p>We are working together to <strong>gain experience</strong> building a high-quality product, <strong>collaborate</strong> with like-minded professionals, and <strong>learn.</strong></p>
+<h2 id="how-are-we-doing-this">How are we doing this</h2>
+<p>To accomplish our goals, we must rely on two key values: communication and automation.</p>
+<p><strong>Communication</strong></p>
+<p>Use our <a href="https://dssquad-wiki.netlify.app/blog/2021-02-20-slack-workspace/">Slack workspace</a> to ask questions and issue updates as frequently as possible. Use our <a href="https://dssquad-wiki.netlify.app/blog/2021-02-20-slack-workspace/">Trello board</a> to lay out your current tasks and update their status often. Finally, get familiar with the required Git workflows(<a href="https://dssquad-wiki.netlify.app/blog/2021-02-20-feature-branching-git-workflow/">feature branching</a> and <a href="https://dssquad-wiki.netlify.app/blog/2021-02-20-pull-requests/">pull requests</a>) to &ldquo;communicate&rdquo; your work in the form of code.</p>
+<p><strong>Automation</strong></p>
+<p>When developing new features, always ask yourself &ldquo;can this be automated?&rdquo; Our final product will be set to update automatically each day, and for that to work all aspects of the product must be fully automated. To achieve automation we will make use of <a href="https://dssquad-wiki.netlify.app/blog/2021-02-23-github-actions/">GitHub Actions</a>, Streamlit Sharing, and possibly other automation tools if the need arises.</p>
 
-# Credentials
-user = os.getenv('CASKEY5_USERNAME')
-pwd = os.getenv('CASKEY5_PASSWORD')
-host = os.getenv('CASKEY5_HOST')
-database = 'caskey5_buffaloCrime'
-
-# Database connection
-cnx = mysql.connector.connect(user=user, password=pwd, host=host, database=database)
-
-# SQL query
-mycursor = cnx.cursor()
-mycursor.execute(&quot;SELECT * FROM all_dates&quot;)
-
-# Collect results from query and cast to Pandas DataFrame
-df = pd.DataFrame(mycursor.fetchall())
-df.columns = mycursor.column_names
-
-# Close connection
-cnx.close()
-
-# Top 5 rows of data
-df.head()
-</code></pre><p><strong>Using <code>sqlalchemy</code>, <code>pymysql</code>, and <code>pandas</code></strong></p>
-<pre><code># Libraries
-from sqlalchemy import create_engine
-import pymysql
-import pandas as pd
-import os
-
-# Credentials
-user = os.getenv('CASKEY5_USERNAME')
-password = os.getenv('CASKEY5_PASSWORD')
-host = os.getenv('CASKEY5_HOST')
-database = 'caskey5_buffaloCrime'
-
-# Database connection
-sqlEngine = create_engine('mysql+pymysql://{}:{}@{}:3306/{}'.format(user,password,host,database), pool_recycle=3600)
-dbConnection = sqlEngine.connect()
-
-# SQL query string
-query = &quot;select * from full_incidents limit 100&quot;
-
-# Execute query and return results as Pandas DataFRame
-pd_df = pd.read_sql(query, dbConnection)
-
-# Close connection!
-dbConnection.close()
-</code></pre>
 
 
                 </div>
