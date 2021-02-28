@@ -9,7 +9,13 @@ meta_img: images/image.png
 description: Description for the page
 ---
 
-**Using `mysql-connector` and `pandas`**
+Use the following code snippets to connect to our MySQL database in Python and submit database queries. Note that your credentials will need to be stored as **environment variables** to prevent sensitive information from being showin in plain text in the codebase.
+
+To set environment variables in Python, use `os.environ["CASKEY5_USERNAME"] = "<username>"`
+
+### Using mysql-connector and pandas
+
+Kudos to Melvin for submitting this contribution.
 
 ```
 import mysql.connector
@@ -40,7 +46,7 @@ cnx.close()
 df.head()
 ```
 
-**Using `sqlalchemy`, `pymysql`, and `pandas`**
+### Using SQLAlchemy, pymysql, and pandas
 
 ```
 # Libraries
