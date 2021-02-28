@@ -9,12 +9,12 @@ meta_img: images/image.png
 description: Description for the page
 ---
 
-GitHub Actions will make it easy to automate and orchestrate various workflows that drive our software. For our purposes, we will use GitHub Actions to automatically deploy and run our production code in GitHub whenever certain actions are performed on a repository.
+GitHub Actions will make it easy to automate and orchestrate various workflows that drive our software. For our purposes, we will use GitHub Actions to trigger our production code to run in response to some automated event.
 
 Examples:
 
-- Every hour, a GitHub Actions workflow will automatically run the production Python script to retrieve new crime incidents from the source API and insert the new records into the production database.
+- Every day, new crime incidents from the source API will be gathered and inserted into the database. This will trigger a "git push" event to the `dssquad-ml` repository.
 
-- After new records have been retrieved, an empty commit is pushed to the `dssquad-ml` repository via automation. This will trigger a GitHub Actions workflow to run the production Python script that retrains the model, inserts new forecasts into the database, and logs accuracy metrics.
+- When the `dssquad-ml` repo receives the push event, GitHub Actions will automatically run a workflow to retrain the model, inserts new forecasts into the database, and logs accuracy metrics. 
 
-- After the data and forecasts have been refreshed, an empty commit is pushed to the `dssquad-app` repository. Streamlit Sharing will automatically detect this event and redeploy the web application, resulting in fresh data and forecasts available to app users in the browser.
+- Once the `dssquad-ml` workflow is complete, this will trigger a "git push" event to the `dssquad-app` repository. Streamlit Sharing will automatically detect this event and redeploy the web application, resulting in fresh data and forecasts available to app users in the browser.
