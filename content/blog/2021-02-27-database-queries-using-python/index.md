@@ -1,5 +1,5 @@
 ---
-title: Database queries using Python and SQLAlchemy and Pandas
+title: Database queries in Python using SQLAlchemy and Pandas
 author: Danny Morris
 date: '2021-02-27'
 slug: []
