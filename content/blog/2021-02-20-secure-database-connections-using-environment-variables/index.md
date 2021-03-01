@@ -11,7 +11,9 @@ description: Description for the page
 
 Use the following code snippets to connect to our MySQL database in Python and submit database queries. Note that your credentials will need to be stored as **environment variables** to prevent sensitive information from being showin in plain text in the codebase.
 
-To set environment variables in Python, use `os.environ["CASKEY5_USERNAME"] = "<username>"`
+To set environment variables in Python, use `os.environ["CASKEY5_USERNAME"] = "<username>"`. Note that this will save the environment variable *for the current session only*. If you begin a new Python session, the environment variables must be saved again. There are ways to set permanent environment variables, but I'll leave that up to you.
+
+:exclamation::exclamation: Any files pushed to GitHub should not contain any credentials exposed in plain text.
 
 ### Using mysql-connector and pandas
 
