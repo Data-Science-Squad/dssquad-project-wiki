@@ -53,7 +53,9 @@ Trello is our Kanban-style tool for organizing and displaying the tasks we are w
       <guid>/blog/2021-03-03-production-automation-pipeline-in-progress/</guid>
       <description>This document serves as a guide for all team members as we start to build out production assets and the production automation pipeline.
 This is the current vision for the production automation pipeline:
-![](images/Production pipeline.png)</description>
+![](images/Production pipeline.png)
+Datakit Q&amp;amp;A Q: What environment resources will be needed to run the datakit codebase?
+A: The datakit codebase will run on a [physical/virtual] machine. The environment will need Python version 3.X and some third-party libraries including [list of libraries].</description>
     </item>
     
     <item>
