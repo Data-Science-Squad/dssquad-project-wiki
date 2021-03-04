@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> Secure database connections and database queries using Python - DS Squad Project Wiki </title>
+    <title> Production automation pipeline (in progress) - DS Squad Project Wiki </title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="referrer" content="no-referrer">
@@ -12,18 +12,18 @@
     <meta property="og:site_name" content="DS Squad Project Wiki" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="/blog/2021-02-20-secure-database-connections-using-environment-variables/" />
-    <meta property="og:title" content="Secure database connections and database queries using Python" />
+    <meta property="og:url" content="/blog/2021-03-03-production-automation-pipeline-in-progress/" />
+    <meta property="og:title" content="Production automation pipeline (in progress)" />
     <meta property="og:image" content="/images/image.png" />
     <meta property="og:description" content="Description for the page" />
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta name="twitter:title" content="Secure database connections and database queries using Python" />
+    <meta name="twitter:title" content="Production automation pipeline (in progress)" />
     <meta name="twitter:description" content="Description for the page" />
     <meta name="twitter:image" content="/images/image.png" />
 
-    <link rel="canonical" href="/blog/2021-02-20-secure-database-connections-using-environment-variables/">
+    <link rel="canonical" href="/blog/2021-03-03-production-automation-pipeline-in-progress/">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous" />
 
@@ -74,7 +74,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12 col-lg-8">
-                <h1 class="mx-0 mx-md-4 blog-post-title">Secure database connections and database queries using Python</h1>
+                <h1 class="mx-0 mx-md-4 blog-post-title">Production automation pipeline (in progress)</h1>
 
                 <div class="mb-md-4 meta">
                     
@@ -85,12 +85,12 @@
                     
                     
 
-                    <span class="date middot" title='Mon Feb 22 2021 00:00:00 UTC'>
-                        2021-02-22
+                    <span class="date middot" title='Wed Mar 3 2021 00:00:00 UTC'>
+                        2021-03-03
                     </span>
 
                     <span class="reading-time middot">
-                        2 min read
+                        1 min read
                     </span>
 
                     <div class="d-none d-md-inline tags">
@@ -102,63 +102,10 @@
 
                 <div class="markdown blog-post-content">
                     
-    <p>Use the following code snippets to connect to our MySQL database in Python and submit database queries. Note that your credentials will need to be stored as <strong>environment variables</strong> to prevent sensitive information from being showin in plain text in the codebase.</p>
-<p>To set environment variables in Python, use <code>os.environ[&quot;CASKEY5_USERNAME&quot;] = &quot;&lt;username&gt;&quot;</code>. Note that this will save the environment variable <em>for the current session only</em>. If you begin a new Python session, the environment variables must be saved again. There are ways to set permanent environment variables, but I&rsquo;ll leave that up to you.</p>
-<p>❗❗ Any files pushed to GitHub should not contain any credentials exposed in plain text.</p>
-<h3 id="using-mysql-connector-and-pandas">Using mysql-connector and pandas</h3>
-<p>Kudos to Melvin for submitting this contribution.</p>
-<pre><code>import mysql.connector
-import pandas as pd
-import os
+    <p>This document serves as a guide for all team members as we start to build out production assets and the production automation pipeline.</p>
+<p>This is the current vision for the production automation pipeline:</p>
+<p>![](images/Production pipeline.png)</p>
 
-# Credentials
-user = os.getenv('CASKEY5_USERNAME')
-pwd = os.getenv('CASKEY5_PASSWORD')
-host = os.getenv('CASKEY5_HOST')
-database = 'caskey5_buffaloCrime'
-
-# Database connection
-cnx = mysql.connector.connect(user=user, password=pwd, host=host, database=database)
-
-# SQL query
-mycursor = cnx.cursor()
-mycursor.execute(&quot;SELECT * FROM all_dates&quot;)
-
-# Collect results from query and cast to Pandas DataFrame
-df = pd.DataFrame(mycursor.fetchall())
-df.columns = mycursor.column_names
-
-# Close connection
-cnx.close()
-
-# Top 5 rows of data
-df.head()
-</code></pre><h3 id="using-sqlalchemy-pymysql-and-pandas">Using SQLAlchemy, pymysql, and pandas</h3>
-<pre><code># Libraries
-from sqlalchemy import create_engine
-import pymysql
-import pandas as pd
-import os
-
-# Credentials
-user = os.getenv('CASKEY5_USERNAME')
-password = os.getenv('CASKEY5_PASSWORD')
-host = os.getenv('CASKEY5_HOST')
-database = 'caskey5_buffaloCrime'
-
-# Database connection
-sqlEngine = create_engine('mysql+pymysql://{}:{}@{}:3306/{}'.format(user,password,host,database), pool_recycle=3600)
-dbConnection = sqlEngine.connect()
-
-# SQL query string
-query = &quot;select * from full_incidents limit 100&quot;
-
-# Execute query and return results as Pandas DataFRame
-pd_df = pd.read_sql(query, dbConnection)
-
-# Close connection!
-dbConnection.close()
-</code></pre>
 
 
                 </div>

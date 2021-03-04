@@ -6,7 +6,7 @@
     <description>Recent content on DS Squad Project Wiki</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 27 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 03 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Getting started with Git and our GitHub repositories</title>
       <link>/blog/2021-02-21-getting-started-with-git-and-github/</link>
@@ -46,6 +46,17 @@ Trello is our Kanban-style tool for organizing and displaying the tasks we are w
     </item>
     
     <item>
+      <title>Production automation pipeline (in progress)</title>
+      <link>/blog/2021-03-03-production-automation-pipeline-in-progress/</link>
+      <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2021-03-03-production-automation-pipeline-in-progress/</guid>
+      <description>This document serves as a guide for all team members as we start to build out production assets and the production automation pipeline.
+This is the current vision for the production automation pipeline:
+![](images/Production pipeline.png)</description>
+    </item>
+    
+    <item>
       <title>Logging ML metrics in Neptune</title>
       <link>/blog/2021-02-27-logging-ml-metrics-in-neptune/</link>
       <pubDate>Sat, 27 Feb 2021 00:00:00 +0000</pubDate>
@@ -67,24 +78,25 @@ The model should be on a daily release cycle, meaning each day the forecast mode
     </item>
     
     <item>
-      <title>Secure database connections and database queries using Python</title>
-      <link>/blog/2021-02-20-secure-database-connections-using-environment-variables/</link>
-      <pubDate>Sat, 27 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/2021-02-20-secure-database-connections-using-environment-variables/</guid>
-      <description>Using mysql-connector and pandas
-import mysql.connectorimport pandas as pdimport os# Credentialsuser = os.getenv(&#39;CASKEY5_USERNAME&#39;)pwd = os.getenv(&#39;CASKEY5_PASSWORD&#39;)host = os.getenv(&#39;CASKEY5_HOST&#39;)database = &#39;caskey5_buffaloCrime&#39;# Database connectioncnx = mysql.connector.connect(user=user, password=pwd, host=host, database=database)# SQL querymycursor = cnx.cursor()mycursor.execute(&amp;quot;SELECT * FROM all_dates&amp;quot;)# Collect results from query and cast to Pandas DataFramedf = pd.DataFrame(mycursor.fetchall())df.columns = mycursor.column_names# Close connectioncnx.close()# Top 5 rows of datadf.</description>
-    </item>
-    
-    <item>
       <title>Automating workflows with GitHub Actions</title>
       <link>/blog/2021-02-23-github-actions/</link>
       <pubDate>Tue, 23 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>/blog/2021-02-23-github-actions/</guid>
-      <description>GitHub Actions will make it easy to automate and orchestrate various workflows that drive our software. For our purposes, we will use GitHub Actions to automatically deploy and run our production code in GitHub whenever certain actions are performed on a repository.
+      <description>GitHub Actions will make it easy to automate and orchestrate various workflows that drive our software. For our purposes, we will use GitHub Actions to trigger our production code to run in response to some automated event.
 Examples:
-  Every hour, a GitHub Actions workflow will automatically run the production Python script to retrieve new crime incidents from the source API and insert the new records into the production database.</description>
+  Every day, new crime incidents from the source API will be gathered and inserted into the database. This will trigger a &amp;ldquo;git push&amp;rdquo; event to the dssquad-ml repository.
+  When the dssquad-ml repo receives the push event, GitHub Actions will automatically run a workflow to retrain the model, inserts new forecasts into the database, and logs accuracy metrics.</description>
+    </item>
+    
+    <item>
+      <title>Secure database connections and database queries using Python</title>
+      <link>/blog/2021-02-20-secure-database-connections-using-environment-variables/</link>
+      <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2021-02-20-secure-database-connections-using-environment-variables/</guid>
+      <description>Use the following code snippets to connect to our MySQL database in Python and submit database queries. Note that your credentials will need to be stored as environment variables to prevent sensitive information from being showin in plain text in the codebase.
+To set environment variables in Python, use os.environ[&amp;quot;CASKEY5_USERNAME&amp;quot;] = &amp;quot;&amp;lt;username&amp;gt;&amp;quot;. Note that this will save the environment variable for the current session only. If you begin a new Python session, the environment variables must be saved again.</description>
     </item>
     
     <item>
