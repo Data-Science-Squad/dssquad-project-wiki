@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> Requirements to productionize the ML model - DS Squad Project Wiki </title>
+    <title> Requirements to productionize the Streamlit app - DS Squad Project Wiki </title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="referrer" content="no-referrer">
@@ -12,18 +12,18 @@
     <meta property="og:site_name" content="DS Squad Project Wiki" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="/blog/2021-02-27-productionalizing-the-ml-model/" />
-    <meta property="og:title" content="Requirements to productionize the ML model" />
+    <meta property="og:url" content="/blog/2021-03-04-productionizing-the-streamlit-app/" />
+    <meta property="og:title" content="Requirements to productionize the Streamlit app" />
     <meta property="og:image" content="/images/image.png" />
     <meta property="og:description" content="Description for the page" />
 
     <meta name="twitter:card" content="summary_large_image" />
     
-    <meta name="twitter:title" content="Requirements to productionize the ML model" />
+    <meta name="twitter:title" content="Requirements to productionize the Streamlit app" />
     <meta name="twitter:description" content="Description for the page" />
     <meta name="twitter:image" content="/images/image.png" />
 
-    <link rel="canonical" href="/blog/2021-02-27-productionalizing-the-ml-model/">
+    <link rel="canonical" href="/blog/2021-03-04-productionizing-the-streamlit-app/">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous" />
 
@@ -74,7 +74,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12 col-lg-8">
-                <h1 class="mx-0 mx-md-4 blog-post-title">Requirements to productionize the ML model</h1>
+                <h1 class="mx-0 mx-md-4 blog-post-title">Requirements to productionize the Streamlit app</h1>
 
                 <div class="mb-md-4 meta">
                     
@@ -90,7 +90,7 @@
                     </span>
 
                     <span class="reading-time middot">
-                        2 min read
+                        1 min read
                     </span>
 
                     <div class="d-none d-md-inline tags">
@@ -102,46 +102,22 @@
 
                 <div class="markdown blog-post-content">
                     
-    <p>This document serves as a guide for putting the ML model into production. Note that this process can be started whenever a prototype model is ready, even if you intend to make improvements.</p>
-<p>The model will be retrained daily whenever there is a push to the <code>main</code> branch of the <code>dssquad-ml</code> repository. This automation is made possible through the use of <a href="https://dssquad-wiki.netlify.app/blog/2021-02-23-github-actions/">GitHub Actions</a>.</p>
-<p>🙌 The four basic steps to put the model into production:</p>
+    <p>This document serves as a guide for putting the Streamlit app into production. Note that this process can be started whenever a prototype app is ready, even if you intend to make improvements.</p>
+<p>The app will be automatically re-deployed daily whenever there is a push to the <code>main</code> branch of the <code>dssquad-app</code> repository. The push event will be configured using GitHub Actions (more details to come).</p>
+<p>🙌 The three basic steps to productionize the model include:</p>
 <ol>
 <li>
-<p>Convert your Jupyter Notebook into one more Python scripts for importing data, training, and inserting predictions into the database. This could be a single <code>train.py</code> file to keep it simple.</p>
+<p>Create a <code>streamlit_app.py</code> file containing the app logic.</p>
 </li>
 <li>
-<p>Create a <code>requirements.txt</code> file containing the libraries and their versions needed to run the model.</p>
+<p>Create a <code>requirements.txt</code> file containing the libraries and their versions needed to run the app.</p>
 </li>
 <li>
-<p>Create a GitHub Actions configuration file located in <code>.github/workflows/&lt;filename&gt;.yml</code> that instructs GitHub to run the training/prediction script whenever there is a push to the <code>main</code> branch.</p>
-</li>
-<li>
-<p>Merge these assets into the <code>main</code> branch with a <a href="https://dssquad-wiki.netlify.app/blog/2021-02-20-pull-requests/">Pull Request</a>.</p>
+<p>Merge these assets (plus any others needed for the app) from the <code>develop</code> branch into the <code>main</code> branch with a <a href="https://dssquad-wiki.netlify.app/blog/2021-02-20-pull-requests/">Pull Request</a>.</p>
 </li>
 </ol>
-<p><strong>Important</strong>: The model and supporting assets should be merged into the <code>develop</code> branch (via pull request) first for testing and receiving feedback. Once approved, submit a pull request to merge the <code>develop</code> branch into the <code>main</code> branch.</p>
-<p>For an example of what the production GitHub branch should look like, vist <a href="https://github.com/Data-Science-Squad/dssquad-ml/tree/dm_example_github_actions">https://github.com/Data-Science-Squad/dssquad-ml/tree/dm_example_github_actions</a></p>
-<h3 id="1-converting-the-jupyter-notebook-into-python-scripts">1. Converting the Jupyter Notebook into Python script(s)</h3>
-<p>Once you have a working model, convert your Jupyter Notebook into one or more Python scripts for collecting data, training, inference, logging metrics, and inserting predictions in the database. A simple solution is to create a single Python script called <code>train.py</code> to perform all of these steps. This file should contain only the essentials for running your model.</p>
-<pre><code># train.py pseudo-code
-import &lt;libraries&gt;
-read_data()
-train()
-predict()
-log_metrics()
-insert_predictions_into_db()
-</code></pre><h3 id="2-create-a-requirementstxt-file-with-your-libraries">2. Create a <code>requirements.txt</code> file with your libraries</h3>
-<p>This file simply contains all necessary libraries and their versions needed to run <code>train.py</code>.</p>
-<pre><code># requirements.txt example
-
-neptune-client==0.4.130
-neptune-contrib==0.27.0
-numpy==1.19.0
-scikit-learn==0.23.1
-mysql-connector-python==8.0.23   
-mysqlclient==2.0.3
-</code></pre><h3 id="3-create-a-github-actions-configuration-file">3. Create a GitHub Actions configuration file</h3>
-<p>This file will enable automation of the model. An example file is located <a href="https://github.com/Data-Science-Squad/dssquad-ml/blob/dm_example_github_actions/.github/workflows/train_and_predict.yml">here</a>.</p>
+<p>Example production branch: <a href="https://github.com/Data-Science-Squad/dssquad-app/tree/dm-test">https://github.com/Data-Science-Squad/dssquad-app/tree/dm-test</a></p>
+<p><strong>Important</strong>: The app should be deployed and tested using the <code>develop</code> branch first before merging into the <code>main</code> branch. This will allow team members to test the app and give feedback before merging into production.</p>
 
 
 

@@ -1,7 +1,7 @@
 ---
-title: Productionizing the ML model
+title: Requirements to productionize the ML model
 author: Danny Morris
-date: '2021-02-27'
+date: '2021-03-04'
 slug: []
 categories: []
 tags: []

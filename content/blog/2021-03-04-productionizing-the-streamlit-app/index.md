@@ -1,5 +1,5 @@
 ---
-title: Productionizing the Streamlit app
+title: Requirements to productionize the Streamlit app
 author: Danny Morris
 date: '2021-03-04'
 slug: []

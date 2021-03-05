@@ -1,5 +1,5 @@
 ---
-title: Production automation pipeline (in progress)
+title: Automating the build and deploy of production software
 author: Danny Morris
 date: '2021-03-03'
 slug: []
@@ -11,61 +11,41 @@ description: Description for the page
 
 This document serves as a guide for all team members as we start to build out production assets and the production automation pipeline.
 
-This is the current vision for the production automation pipeline:
+### Overview
 
-![](images/Production-pipeline.png)
+The following diagram presents a high-level overview of the production automation lifecycle.
 
-### Datakit Q&A
+![](images/Production-diagram.png)
 
-**Q: What environment resources will be needed to run the datakit codebase?**
+Each day, the `datakit` codebase will collect new incidents from the source API and update the database with production data assets. Then, the `dssquad-ml` codebase will retrain the model on fresh data and insert forecasts into the database. Finally, the `dssquad-app` codebase will build and deploy a new version of the Streamlit app using all up-to-date production data assets.
 
-A: The datakit codebase will run on a [physical/virtual] machine. The environment will need Python version 3.X and some third-party libraries including [list of libraries].
+All of this will happen via automation.
 
-**Q: What event will trigger the deployment and execution of the datakit codebase?**
+### Production requirements for each team
 
-A: The datakit code will run at [insert time] each day.
+Data Engineering - [Requirements]({{< ref "/blog/2021-03-05-requirements-to-productionize-the-datakit" >}} "Requirements")
 
-**Q: Will the datakit codebase need to be deployed to another machine for execution?**
+Machine Learning - [Requirements]({{< ref "/blog/2021-02-27-productionalizing-the-ml-model" >}} "Requirements")
 
-A: If using a physical machine, the code will need to be deployed from the main branch of the GitHub repository to the physical machine using Git. If using a virtual machine, such as GitHub Actions, the code does not need to be deployed to another location.
+Web application - [Requirements]({{< ref "/blog/2021-03-04-productionizing-the-streamlit-app" >}} "Requirements")
 
-**Q: How will the datakit codebase be executed?**
+### Automating workflows with GitHub Actions
 
-A: Shell script
+GitHub Actions will make it easy to automate and orchestrate the execution of code to build and deploy our software. For our purposes, we will use GitHub Actions to trigger the execution of production code sequentially across multiple repositories to automate our daily builds.
 
-### Machine Learning Q&A
+GitHub Actions runs "workflows" in response to one or more "events". Common event types to trigger workflows include:
 
-**Q: What environment resources will be needed to run the ML codebase?**
+- `schedule` events, i.e. cron expressions run workflows at specific times
+- `push` events, i.e. a commit is pushed to the repo and runs the workflow
+- `worflow_dispatch`, e.g. the completion of a workflow in one repository triggers the execution of a workflow in another
 
-A: The datakit codebase will run on a virtual machine using GitHub Actions. The environment will be configured to use Python version 3.X and some third-party libraries including [list of libraries].
+**Using GitHub Actions for our project**
 
-**Q: What event will trigger the deployment and execution of the ML codebase?**
+For our project, we will strive for the following production workflow sequence:
 
-A: The datakit code will run once the datakit has been executed. More details needed...
+1. The `dssquad-datakit` codebase runs via a `schedule` event at [insert time] each day. 
 
-**Q: Will the ML codebase need to be deployed to another machine for execution?**
+2. Upon completion, a `worflow_dispatch` event is triggered to run the `dssquad-ml` codebase. 
 
-A: No, the ML codebase will run on a virtual machine using GitHub Actions.
-
-**Q: How will the datakit codebase be executed?**
-
-A: Using a GitHub Actions workflow configuration file.
-
-### Web Application Q&A
-
-**Q: What environment resources will be needed to run the ML codebase?**
-
-A: The app codebase will run on either Streamlit Sharing or Heroku virtual machine containing Python 3.X and some third-party libraries including [list of libraries].
-
-**Q: What event will trigger the deployment and execution of the ML codebase?**
-
-A: The app code will run once the ML codebase has been executed. More details needed...
-
-**Q: Will the app codebase need to be deployed to another machine for execution?**
-
-A: No, the app codebase will be deployed from GitHub to Streamlit/Heroku using fully managed services provided by Streamlit/Heroku.
-
-**Q: How will the app codebase be executed?**
-
-A: Using fully managed services provided by Streamlit/Heroku.
+3. Upon completion, another `worflow_dispatch` event is triggered to run the `dssquad-app` codebase.
 

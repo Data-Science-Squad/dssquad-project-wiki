@@ -9,12 +9,21 @@ meta_img: images/image.png
 description: Description for the page
 ---
 
-GitHub Actions will make it easy to automate and orchestrate various workflows that drive our software. For our purposes, we will use GitHub Actions to trigger our production code to run in response to some automated event.
+GitHub Actions will make it easy to automate and orchestrate the execution of code to build and deploy our software. For our purposes, we will use GitHub Actions to trigger the execution of production code sequentially across multiple repositories to automate our daily build.
 
-Examples:
+GitHub Actions runs "workflows" in response to one or more "events". Common event types to trigger workflows include:
 
-- Every day, new crime incidents from the source API will be gathered and inserted into the database. This will trigger a "git push" event to the `dssquad-ml` repository.
+- `schedule` events, i.e. cron expressions run workflows at specific times
+- `push` events, i.e. a commit is pushed to the repo and runs the workflow
+- `worflow_dispatch`, e.g. the completion of a workflow in one repository triggers the execution of a workflow in another
 
-- When the `dssquad-ml` repo receives the push event, GitHub Actions will automatically run a workflow to retrain the model, inserts new forecasts into the database, and logs accuracy metrics. 
+### Using GitHub Actions for our project
 
-- Once the `dssquad-ml` workflow is complete, this will trigger a "git push" event to the `dssquad-app` repository. Streamlit Sharing will automatically detect this event and redeploy the web application, resulting in fresh data and forecasts available to app users in the browser.
+For our project, we will strive for the following production workflow sequence:
+
+1. The `dssquad-datakit` codebase runs via a `schedule` event at [insert time] each day. 
+
+2. Upon completion, a `worflow_dispatch` event is triggered to run the `dssquad-ml` codebase. 
+
+3. Upon completion, another `worflow_dispatch` event is triggered to run the `dssquad-app` codebase.
+
